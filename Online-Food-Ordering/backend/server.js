@@ -9,15 +9,17 @@ const orderRoutes = require('./src/routes/orderRoutes');
 const User = require('./src/models/User');
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 
-// Handle preflight requests
-app.options('*', (req, res) => {
+// Add CORS headers to all responses
+app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.sendStatus(200);
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
 });
 
 // Connect to MongoDB
