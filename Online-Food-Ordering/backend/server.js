@@ -24,6 +24,9 @@ console.log('Registering routes...');
 
 // Direct register route
 app.post('/api/auth/register', async (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     console.log('Register:', req.body);
     try {
         const { username, email, password } = req.body;
@@ -43,6 +46,9 @@ app.post('/api/auth/register', async (req, res) => {
 
 // Direct login route
 app.post('/api/auth/login', async (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     console.log('Login:', req.body.email);
     try {
         const { email, password } = req.body;
