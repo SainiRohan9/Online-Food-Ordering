@@ -4,7 +4,6 @@ import API from '../api';
 const Admin = () => {
     const [stats, setStats] = useState({ totalOrders: 0, totalEarnings: 0, statusCounts: {} });
     const [food, setFood] = useState({ name: '', description: '', price: '', image: '', category: '' });
-    const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         const fetchStats = async () => {
